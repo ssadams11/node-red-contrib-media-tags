@@ -1,0 +1,108 @@
+<!--
+  Copyright 2017 IBM Corp.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+
+<!-- *************************************************************  -->
+
+<script type="text/javascript">
+    console.log("registering get media tags");
+    RED.nodes.registerType('get media tags',{
+        category: 'media',
+        color: '#59caff',
+        defaults: {
+            name: {value:""},
+            filename: {value:""},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"get media tags";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="get media tags">
+    <div class="form-row">
+        <label for="node-input-filename"><i class="icon-tag"></i> Filename:</label>
+        <input type="text" id="node-input-filename" placeholder="./mymusic.mp3"">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="get media tags">
+   <p>This node returns the media tags found in the referenced file, such as ID3 tags in MP3 files.</p>
+   <p>Parameters:</p>
+   <ul>
+        <li>Filename: path name to file to be searched for tags, e.g., "./mymusic.mp3</li>
+    </ul>
+   <p>Outputs an object containing the tags found:
+
+<b>ID3v2</b>
+<code>
+{
+  type: "ID3",
+  version: "2.4.0",
+  major: 4,
+  revision: 0,
+  tags: {
+    artist: "Sam, The Kid",
+    album: "Pratica(mente)",
+    track: "12",
+    TPE1: {
+      id: "TPE1",
+      size: 14,
+      description: "Lead performer(s)/Soloist(s)",
+      data: "Sam, The Kid"
+    },
+    TALB: {
+      id: "TALB",
+      size: 16,
+      description: "Album/Movie/Show title",
+      data: "Pratica(mente)"
+    },
+    TRCK: {
+      id: "TRCK",
+      size: 3,
+      description: "Track number/Position in set",
+      data: "12",
+    }
+  },
+  size: 34423,
+  flags: {
+    unsynchronisation: false,
+    extended_header: false,
+    experimental_indicator: false,
+    footer_present: false
+  }
+}
+</code>
+<b>MP4</b>
+<code>
+{
+  type: "MP4",
+  ftyp: "M4A",
+  version: 0,
+  tags: {
+    "©too": {
+      id: "©too",
+      size: 35,
+      description: 'Encoding Tool',
+      data: 'Lavf53.24.2'
+    }
+  }
+}
+</code>
+
+
+</script>
+</script>
