@@ -31,7 +31,7 @@ module.exports = function(RED) {
             }
             jsmediatags.read(fn, {
                 onSuccess: function(tag) {
-                    console.log(tag);
+                    //console.log(tag);
                     msg.payload = tag;
                     node.send(msg)
                 },
