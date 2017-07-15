@@ -36,8 +36,11 @@ module.exports = function(RED) {
                     node.send(msg)
                 },
                 onError: function(error) {
-                    console.log(':(', error.type, error.info);
-                    node.error(error)
+                    var err = {error: error, filename:msg.filename}
+                    console.log(':(', JSON.stringify(err));
+                    node.error(err)
+                    msg.payload = err
+                    node.send(msg)
                 }
             });
 
