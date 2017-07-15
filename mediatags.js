@@ -25,7 +25,11 @@ module.exports = function(RED) {
         var node = this;
         this.on('input', function(msg) {
             var jsmediatags = require('jsmediatags');
-            jsmediatags.read(this.filename, {
+            var fn = msg.filename
+            if (!fn){
+                fn = this.filename
+            }
+            jsmediatags.read(fn, {
                 onSuccess: function(tag) {
                     console.log(tag);
                     msg.payload = tag;

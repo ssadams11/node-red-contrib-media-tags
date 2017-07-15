@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-media-tags",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "name": "node-red-contrib-media-tags",
   "description": "A Node-RED node to parse Media Tags (e.g., ID3) from files",
   "repository": {
@@ -10,7 +10,7 @@
   "dependencies": {
     "jsmediatags": "3.6.1"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [
     "node-red",
     "jsmediatags",
